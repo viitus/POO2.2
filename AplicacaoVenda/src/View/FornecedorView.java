@@ -1,8 +1,9 @@
 package View;
-
+/*Vitus*/
 import Model.FornecedorModel;
 
 public class FornecedorView extends javax.swing.JInternalFrame {
+    
     private int linha = -1;
     public FornecedorView() {
         initComponents();
