@@ -1,6 +1,11 @@
 package View;
 /*Vitus*/
 import Model.FornecedorModel;
+import Controler.FornecedorController;
+import java.util.ArrayList;
+import java.util.Set;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FornecedorView extends javax.swing.JInternalFrame {
     
@@ -51,7 +56,10 @@ public class FornecedorView extends javax.swing.JInternalFrame {
         jLendereco.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLendereco.setText("Endereço:");
 
+        jtxIdFornecedor.setColumns(15);
+
         jtxCnpj.setEditable(false);
+        jtxCnpj.setColumns(15);
         jtxCnpj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxCnpjActionPerformed(evt);
@@ -117,7 +125,7 @@ public class FornecedorView extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "CNPJ", "Razão Social", "Endereço"
             }
         ));
         jTFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,48 +140,49 @@ public class FornecedorView extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLrazaosocial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jbEditar)
+                        .addGap(186, 186, 186)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLrazaosocial)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jbNovo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jbSalvar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jbEditar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jbExcluir)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jbFechar))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLendereco)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLcnpj)
+                                    .addComponent(jlcodigo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbExcluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbFechar))
-                            .addComponent(jbPesquisar)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtxCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbPesquisar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLendereco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLcnpj)
-                            .addComponent(jlcodigo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(185, 185, 185)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGap(65, 65, 65)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlcodigo)
                     .addComponent(jtxIdFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,45 +206,53 @@ public class FornecedorView extends javax.swing.JInternalFrame {
                     .addComponent(jbExcluir)
                     .addComponent(jbNovo)
                     .addComponent(jbFechar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(427, 427, 427))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        jbNovo.setEnabled(false);
-        jbEditar.setEnabled(true);
-        jbExcluir.setEnabled(true);
-        jbSalvar.setEnabled(false);
-        jtxIdFornecedor.setEditable(false);
-        jtxCnpj.setEditable(true);
-        jtxEndereco.setEditable(true);
-        jtxRazaoSocial.setEditable(true);
         FornecedorModel fornecedor = new FornecedorModel();
-        fornecedor.setIdFornecedor(Integer.parseInt(jtxIdFornecedor.getText()));
-        //Controler
-        //PreencherCampos
-        //validar se o fornecedor foi encontrado
+        if(jtxIdFornecedor.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Preencha o Código do fornecedor");
+        }else{
+            fornecedor.setIdFornecedor(Integer.parseInt(jtxIdFornecedor.getText()));
+            //Controler
+            FornecedorController controller = new FornecedorController();
+            fornecedor = controller.selecionar(fornecedor);
+            //validar se o fornecedor foi encontrado
+            if(fornecedor == null){
+                JOptionPane.showMessageDialog(this, "Fornecedor nao encontrado");
+            }else{
+                //PreencherCampos
+                jtxCnpj.setText(fornecedor.getCnpj());
+                jtxRazaoSocial.setText(fornecedor.getRazaoSocial());
+                jtxEndereco.setText(fornecedor.getEndereco());
+
+                jbNovo.setEnabled(false);
+                jbEditar.setEnabled(true);
+                jbExcluir.setEnabled(true);
+                jbSalvar.setEnabled(false);
+                jtxIdFornecedor.setEditable(false);
+                jtxCnpj.setEditable(true);
+                jtxEndereco.setEditable(true);
+                jtxRazaoSocial.setEditable(true);   
+            }
+        }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
     private void jtxCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxCnpjActionPerformed
@@ -247,6 +264,7 @@ public class FornecedorView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtxEnderecoActionPerformed
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
+        limparCampos();
         jbPesquisar.setEnabled(false);
         jbNovo.setEnabled(false);
         jbEditar.setEnabled(false);
@@ -263,38 +281,71 @@ public class FornecedorView extends javax.swing.JInternalFrame {
         String razaoSocial = jtxRazaoSocial.getText();
         String endereco = jtxEndereco.getText();
         
-        FornecedorModel fornecedor = new FornecedorModel();
-        fornecedor.setCnpj(cnpj);
-        fornecedor.setEndereco(endereco);
-        fornecedor.setRazaoSocial(razaoSocial);
-        //Controler
-        limparCampos();
-        inicializa();
-        PreencherTabela();
+        if((cnpj.isEmpty())||(razaoSocial.isEmpty())||(endereco.isEmpty())){
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+        }else{
+            FornecedorModel fornecedor = new FornecedorModel();
+            fornecedor.setCnpj(cnpj);
+            fornecedor.setEndereco(endereco);
+            fornecedor.setRazaoSocial(razaoSocial);
+            
+            //Controler
+            FornecedorController controller = new FornecedorController();
+            if(controller.inserir(fornecedor)){
+                JOptionPane.showMessageDialog(this, "Inserido com sucesso");
+                limparCampos();
+                inicializa();
+                PreencherTabela();
+            }else{
+                JOptionPane.showMessageDialog(this, "Erro ao inserir o fonecedor");
+            }
+        }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         String cnpj = jtxCnpj.getText();
         String razaoSocial = jtxRazaoSocial.getText();
         String endereco = jtxEndereco.getText();
-        FornecedorModel fornecedor = new FornecedorModel();
-        fornecedor.setCnpj(cnpj);
-        fornecedor.setEndereco(endereco);
-        fornecedor.setRazaoSocial(razaoSocial);
-        fornecedor.setIdFornecedor(Integer.parseInt(jtxIdFornecedor.getText()));
-        //Controler
-        limparCampos();
-        inicializa();
-        PreencherTabela();
+        
+        if((cnpj.isEmpty())||(razaoSocial.isEmpty())||(endereco.isEmpty())){
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+        }else{
+            FornecedorModel fornecedor = new FornecedorModel();
+            fornecedor.setCnpj(cnpj);
+            fornecedor.setEndereco(endereco);
+            fornecedor.setRazaoSocial(razaoSocial);
+            fornecedor.setIdFornecedor(Integer.parseInt(jtxIdFornecedor.getText()));
+                
+            //Controler
+            FornecedorController controller = new FornecedorController();
+            if(controller.editar(fornecedor)){
+                JOptionPane.showMessageDialog(this, "Atualizado com Sucesso");
+                limparCampos();
+                inicializa();
+                PreencherTabela();
+            }else{
+                JOptionPane.showMessageDialog(this, "Erro ao editar fornecedor");
+            }
+        }
     }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         FornecedorModel fornecedor = new FornecedorModel();
-        fornecedor.setIdFornecedor(Integer.parseInt(jtxIdFornecedor.getText()));
-        //Controler
-        limparCampos();
-        inicializa();
-        PreencherTabela();
+        if(jtxIdFornecedor.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Preencha o Código do fornecedor");
+        }else{
+            fornecedor.setIdFornecedor(Integer.parseInt(jtxIdFornecedor.getText()));
+            //Controler
+            FornecedorController controller = new FornecedorController();
+            if(controller.excluir(fornecedor)){
+                JOptionPane.showMessageDialog(this, "Excluido com sucesso");
+                limparCampos();
+                inicializa();
+                PreencherTabela();
+            }else{
+                JOptionPane.showMessageDialog(this, "Erro ao excluir");
+            }
+        }
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jTFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFornecedorMouseClicked
@@ -306,8 +357,8 @@ public class FornecedorView extends javax.swing.JInternalFrame {
             jtxEndereco.setText(jTFornecedor.getValueAt(linha, 3).toString());
             
             jbPesquisar.setEnabled(false);
-            jbNovo.setEnabled(false);
-            jbEditar.setEnabled(false);
+            jbNovo.setEnabled(true);
+            jbEditar.setEnabled(true);
             jbExcluir.setEnabled(false);
             jbSalvar.setEnabled(true);
             jtxIdFornecedor.setEditable(false);
@@ -323,13 +374,29 @@ public class FornecedorView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void PreencherTabela(){
-        // ToDo
+        FornecedorController controller = new FornecedorController();
+        ArrayList<FornecedorModel> lista = controller.selecionarTodos();
+        if(lista.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Nenhum fornecedor cadastrado");
+        }else{
+            DefaultTableModel modeloTabela = (DefaultTableModel) jTFornecedor.getModel();
+            modeloTabela.setRowCount(0);
+            for(FornecedorModel f:lista){
+                modeloTabela.addRow(new String[]{
+                    String.valueOf(f.getIdFornecedor()),f.getCnpj(),f.getRazaoSocial(),f.getEndereco()
+                });
+            }
+        }
     }
     
     private void inicializa(){
+        jbPesquisar.setEnabled(true);
+        jbNovo.setEnabled(true);
+        
         jtxCnpj.setEditable(false);
         jtxEndereco.setEditable(false);
         jtxRazaoSocial.setEditable(false);
+        
         jbSalvar.setEnabled(false);
         jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
