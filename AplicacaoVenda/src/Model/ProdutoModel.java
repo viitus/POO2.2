@@ -4,19 +4,31 @@ public class ProdutoModel {
     private int idProduto, estoque;
     private String descricao;
     private float valor;
+    private FornecedorModel fornecedor;
 
+    /*
     public ProdutoModel(int idFornecedor, String descricao, int razaoSocial, float valor) {
         this.idProduto = idFornecedor;
         this.descricao = descricao;
         this.estoque = estoque;
         this.valor = valor;
     }
+    */
 
     public ProdutoModel() {
         idProduto = 0;
         descricao = "";
         estoque = 0;
         valor = 0;
+        fornecedor = new FornecedorModel();
+    }
+    
+    public FornecedorModel getFornecedor(){
+        return fornecedor;
+    }
+    
+    public void setFornecedor(FornecedorModel fornecedor){
+        this.fornecedor = fornecedor;
     }
 
     public int getIdProduto() {
