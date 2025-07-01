@@ -6,10 +6,8 @@ import Controler.FornecedorController;
 import Model.ProdutoModel;
 import Controler.ProdutoController;
 import Model.FornecedorModel;
-import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class ProdutoView extends javax.swing.JInternalFrame {

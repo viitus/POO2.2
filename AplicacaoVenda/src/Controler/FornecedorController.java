@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import util.Conecxao;
+import util.Conexao;
 
 /*Vitus*/
 
@@ -14,7 +14,7 @@ public class FornecedorController {
     public boolean inserir(FornecedorModel fornecedor) {
         boolean retorno = false;
         //CONECTAR COM BANCO
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         //CRIAR SQL INSERT
         String sql = "insert into fornecedor (cnpj,razaosocial,endereco)values (?,?,?)";
@@ -38,7 +38,7 @@ public class FornecedorController {
     
     public boolean editar(FornecedorModel fornecedor){
         boolean retorno = false;
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "update fornecedor set cnpj = ?, razaosocial = ?, endereco = ? where idFornecedor = ? ";
         try {
@@ -58,7 +58,7 @@ public class FornecedorController {
     
     public boolean excluir(FornecedorModel fornecedor) {
         boolean retorno = false;
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "delete from fornecedor where idFornecedor = ?";
         try{
@@ -75,7 +75,7 @@ public class FornecedorController {
     
     public FornecedorModel selecionar(FornecedorModel fornecedor) {
         FornecedorModel retorno = null;
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "select * from fornecedor where idfornecedor = ?";
         try{
@@ -98,7 +98,7 @@ public class FornecedorController {
 
     public ArrayList<FornecedorModel> selecionarTodos() {
         ArrayList<FornecedorModel> retorno = new ArrayList<>();
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "select * from fornecedor";
         try{

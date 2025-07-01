@@ -1,8 +1,5 @@
 package View;
 
-import java.awt.Color;
-import javax.swing.UIManager;
-
 public class Principal extends javax.swing.JFrame {
     
     public Principal() {

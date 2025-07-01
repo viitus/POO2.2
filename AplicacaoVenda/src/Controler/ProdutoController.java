@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import util.Conecxao;
+import util.Conexao;
 
 /*Vitus*/
 
@@ -14,7 +14,7 @@ public class ProdutoController {
     public boolean inserir(ProdutoModel produto) {
         boolean retorno = false;
         //CONECTAR COM BANCO
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         //CRIAR SQL INSERT
         String sql = "insert into produto (descricao, estoque, valor, fornecedor) values (?,?,?,?)";
@@ -39,7 +39,7 @@ public class ProdutoController {
     
     public boolean editar(ProdutoModel produto){
         boolean retorno = false;
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "update produto set descricao = ?, estoque = ?, valor = ?, fornecedor = ? where idProduto = ? ";
         try {
@@ -60,7 +60,7 @@ public class ProdutoController {
     
     public boolean excluir(ProdutoModel produto) {
         boolean retorno = false;
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "delete from produto where idProduto = ?";
         try{
@@ -77,7 +77,7 @@ public class ProdutoController {
     
     public ProdutoModel selecionar(ProdutoModel produto) {
         ProdutoModel retorno = null;
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "select p.idProduto, p.estoque, p.valor, p.descricao, f.razaoSocial, f.idfornecedor " 
                    + "from produto p, fornecedor f "
@@ -105,7 +105,7 @@ public class ProdutoController {
 
     public ArrayList<ProdutoModel> selecionarTodos() {
         ArrayList<ProdutoModel> retorno = new ArrayList<>();
-        Conecxao c = new Conecxao();
+        Conexao c = new Conexao();
         c.conectar();
         String sql = "select p.idProduto, p.estoque, p.valor, p.descricao, f.razaoSocial, f.idfornecedor " 
                    + "from produto p, fornecedor f "

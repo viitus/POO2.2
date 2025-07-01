@@ -6,15 +6,15 @@ public class ProdutoModel {
     private float valor;
     private FornecedorModel fornecedor;
 
-    /*
-    public ProdutoModel(int idFornecedor, String descricao, int razaoSocial, float valor) {
+    
+    public ProdutoModel(int idFornecedor, String descricao, int estoque, int razaoSocial, float valor) {
         this.idProduto = idFornecedor;
         this.descricao = descricao;
         this.estoque = estoque;
         this.valor = valor;
+        this.fornecedor = new FornecedorModel();
     }
-    */
-
+    
     public ProdutoModel() {
         idProduto = 0;
         descricao = "";

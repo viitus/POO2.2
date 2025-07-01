@@ -3,7 +3,6 @@ package View;
 import Model.FornecedorModel;
 import Controler.FornecedorController;
 import java.util.ArrayList;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
