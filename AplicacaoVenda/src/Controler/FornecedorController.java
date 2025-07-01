@@ -17,7 +17,7 @@ public class FornecedorController {
         Conexao c = new Conexao();
         c.conectar();
         //CRIAR SQL INSERT
-        String sql = "insert into fornecedor (cnpj,razaosocial,endereco)values (?,?,?)";
+        String sql = "INSERT INTO fornecedor (cnpj,razaosocial,endereco) VALUES (?,?,?)";
         try {
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             //PASSAR PARAMETROS
@@ -40,7 +40,8 @@ public class FornecedorController {
         boolean retorno = false;
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "update fornecedor set cnpj = ?, razaosocial = ?, endereco = ? where idFornecedor = ? ";
+        String sql = "UPDATE fornecedor SET cnpj = ?, razaosocial = ?, endereco = ? "
+                   + "WHERE idFornecedor = ? ";
         try {
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             sentenca.setString(1, fornecedor.getCnpj());
@@ -60,7 +61,7 @@ public class FornecedorController {
         boolean retorno = false;
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "delete from fornecedor where idFornecedor = ?";
+        String sql = "DELETE FROM fornecedor WHERE idFornecedor = ?";
         try{
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             sentenca.setInt(1, fornecedor.getIdFornecedor());
@@ -77,7 +78,7 @@ public class FornecedorController {
         FornecedorModel retorno = null;
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "select * from fornecedor where idfornecedor = ?";
+        String sql = "SELECT * FROM fornecedor WHERE idfornecedor = ?";
         try{
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             sentenca.setInt(1, fornecedor.getIdFornecedor());
@@ -100,7 +101,7 @@ public class FornecedorController {
         ArrayList<FornecedorModel> retorno = new ArrayList<>();
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "select * from fornecedor";
+        String sql = "SELECT * FROM fornecedor";
         try{
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();

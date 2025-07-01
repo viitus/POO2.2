@@ -15,6 +15,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jmiFornecedor = new javax.swing.JMenuItem();
         jmiProduto = new javax.swing.JMenuItem();
+        jmiVenda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -24,11 +25,11 @@ public class Principal extends javax.swing.JFrame {
         AreadeTrabalho.setLayout(AreadeTrabalhoLayout);
         AreadeTrabalhoLayout.setHorizontalGroup(
             AreadeTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 978, Short.MAX_VALUE)
         );
         AreadeTrabalhoLayout.setVerticalGroup(
             AreadeTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGap(0, 652, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Cadastro");
@@ -49,6 +50,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jmiProduto);
 
+        jmiVenda.setText("Venda");
+        jmiVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiVendaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiVenda);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -57,11 +66,15 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AreadeTrabalho)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(AreadeTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AreadeTrabalho)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(AreadeTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +91,12 @@ public class Principal extends javax.swing.JFrame {
         produto.setVisible(true);
         AreadeTrabalho.add(produto);
     }//GEN-LAST:event_jmiProdutoActionPerformed
+
+    private void jmiVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVendaActionPerformed
+        VendaView venda = new VendaView();
+        venda.setVisible(true);
+        AreadeTrabalho.add(venda);
+    }//GEN-LAST:event_jmiVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,5 +139,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jmiFornecedor;
     private javax.swing.JMenuItem jmiProduto;
+    private javax.swing.JMenuItem jmiVenda;
     // End of variables declaration//GEN-END:variables
 }

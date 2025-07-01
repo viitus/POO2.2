@@ -17,7 +17,7 @@ public class ProdutoController {
         Conexao c = new Conexao();
         c.conectar();
         //CRIAR SQL INSERT
-        String sql = "insert into produto (descricao, estoque, valor, fornecedor) values (?,?,?,?)";
+        String sql = "INSERT INTO produto (descricao, estoque, valor, fornecedor) VALUES (?,?,?,?)";
         try {
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             //PASSAR PARAMETROS
@@ -41,7 +41,7 @@ public class ProdutoController {
         boolean retorno = false;
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "update produto set descricao = ?, estoque = ?, valor = ?, fornecedor = ? where idProduto = ? ";
+        String sql = "UPDATE produto SET descricao = ?, estoque = ?, valor = ?, fornecedor = ? WHERE idProduto = ? ";
         try {
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             sentenca.setString(1, produto.getDescricao());
@@ -52,7 +52,7 @@ public class ProdutoController {
             if (!sentenca.execute()) 
                 retorno = true;
         } catch (SQLException e) {
-            System.out.println("Erro ao editar: " + e.getMessage());
+            System.out.println("Erro ao editar Produto: " + e.getMessage());
         }
         c.desconectar();
         return retorno;
@@ -62,14 +62,14 @@ public class ProdutoController {
         boolean retorno = false;
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "delete from produto where idProduto = ?";
+        String sql = "DELETE FROM produto WHERE idProduto = ?";
         try{
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             sentenca.setInt(1, produto.getIdProduto());
             if(!sentenca.execute())
                 retorno = true;
         }catch(SQLException e){
-            System.out.println("Erro ao deletar!"+ e.getMessage());
+            System.out.println("Erro ao deletar produto: "+ e.getMessage());
         }
         c.desconectar();
         return retorno;
@@ -79,9 +79,9 @@ public class ProdutoController {
         ProdutoModel retorno = null;
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "select p.idProduto, p.estoque, p.valor, p.descricao, f.razaoSocial, f.idfornecedor " 
-                   + "from produto p, fornecedor f "
-                   + "where f.idfornecedor = p.fornecedor and idProduto = ?";
+        String sql = "SELECT p.idProduto, p.estoque, p.valor, p.descricao, f.razaoSocial, f.idfornecedor " 
+                   + "FROM produto p, fornecedor f "
+                   + "WHERE f.idfornecedor = p.fornecedor AND idProduto = ?";
         try{
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             sentenca.setInt(1, produto.getIdProduto());
@@ -107,9 +107,9 @@ public class ProdutoController {
         ArrayList<ProdutoModel> retorno = new ArrayList<>();
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "select p.idProduto, p.estoque, p.valor, p.descricao, f.razaoSocial, f.idfornecedor " 
-                   + "from produto p, fornecedor f "
-                   + "where f.idfornecedor = p.fornecedor";
+        String sql = "SELECT p.idProduto, p.estoque, p.valor, p.descricao, f.razaoSocial, f.idfornecedor " 
+                   + "FROM produto p, fornecedor f "
+                   + "WHERE f.idfornecedor = p.fornecedor";
         try{
             PreparedStatement sentenca = c.conector.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
@@ -121,7 +121,6 @@ public class ProdutoController {
                 f.setValor(result.getFloat("valor"));
                 f.getFornecedor().setIdFornecedor(result.getInt("idfornecedor"));
                 f.getFornecedor().setRazaoSocial(result.getString("razaoSocial"));
-                
                 retorno.add(f);
             }
         }catch(SQLException  e){
