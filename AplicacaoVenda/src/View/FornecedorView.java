@@ -361,6 +361,9 @@ public class FornecedorView extends javax.swing.JInternalFrame {
             jtxCnpj.setEditable(true);
             jtxEndereco.setEditable(true);
             jtxRazaoSocial.setEditable(true);
+            
+            jbSalvar.setText("Salvar Edição");
+            
             linha = -1;
         }
     }//GEN-LAST:event_jTFornecedorMouseClicked
